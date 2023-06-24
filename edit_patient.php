@@ -6,8 +6,8 @@
     $query = "SELECT * FROM `patients` where pat_id = $pat_id";
     $result = mysqli_query($connect, $query);
     $row = mysqli_fetch_assoc($result);
-    $dep_id = $row['pat_dep_id'];
-    $doc_id = $row['pat_doc_id'];
+    $pat_dep_id = $row['pat_dep_id'];
+    $pat_doc_id = $row['pat_doc_id'];
 ?>
 <nav class="navbar justify-content-center mt-4 mb-4">
     <h1>Patients Information Update Form</h1>
@@ -50,7 +50,7 @@
                     $query = "SELECT * FROM `departments`";  
                     $result = mysqli_query($connect, $query);                                
                     while ($row = mysqli_fetch_assoc($result)) {     
-                        $selected = ($row['dep_id'] ==  $dep_id) ? 'selected' : '';                 
+                        $selected = (trim($row['dep_id']) ==  trim($pat_dep_id)) ? 'selected' : '';                 
                         echo "<option value='$row[dep_id]' $selected>$row[dep_name]</option>";
                     }       
                 ?>
@@ -63,11 +63,11 @@
                 <option value="">-Select Doctor-</option>
                 <?php
                     // Fetch and populate the doctors based on the selected department ID
-                    $query = "SELECT * FROM `doctors` WHERE doc_dep_id = '$dep_id'"; // Assuming $departmentId holds the selected department ID
+                    $query = "SELECT * FROM `doctors` WHERE doc_dep_id = '$pat_dep_id'";// Assuming $departmentId holds the selected department ID
                     $result = mysqli_query($connect, $query);
                     while ($row = mysqli_fetch_assoc($result)) {
                         // echo $row['doc_id'] . ' = ' . $doc_id;
-                        $doc_selected = (trim($row['doc_id']) ==  trim($doc_id)) ? 'selected' : ''; // Assuming $departmentId holds the selected department ID                        
+                        $doc_selected = (trim($row['doc_id']) ==  trim($pat_doc_id)) ? 'selected' : ''; // Assuming $departmentId holds the selected department ID                        
                         echo "<option value='$row[doc_id]' $doc_selected>$row[doc_name]</option>";
                     }
                 ?>
