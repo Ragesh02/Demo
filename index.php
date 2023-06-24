@@ -54,8 +54,8 @@
                 <td><?php echo $row['dep_name']; ?></td>
                 <td><?php echo $row['doc_name']; ?></td>
                 <td>
-                    <a href="edit_patient.php?pat_id=<?php echo $row['pat_id']; ?>">Edit</a> | 
-                    <a href="delete_patient.php?pat_id=<?php echo $row['pat_id']; ?>">Delete</a>
+                    <a href="edit_patient.php?pat_id=<?php echo $row['pat_id']; ?>" style="color: black;"><i class="fa-solid fa-pen-to-square"></i></a> | 
+                    <a href="delete_patient.php?pat_id=<?php echo $row['pat_id']; ?>" style="color: black;"><i class="fa-solid fa-trash"></i></a>
                 </td>
             </tr>
             <?php } ?>
