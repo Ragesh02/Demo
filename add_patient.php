@@ -1,8 +1,22 @@
 <?php include "db_conn.php"; ?>
 <?php include "header.php"; ?>
 
-<nav class="navbar justify-content-center mt-4 mb-4">
+<nav class="navbar justify-content-center mt-4 mb-3">
     <h1>Patients Information Form</h1>
+</nav>
+
+<nav class="navbar justify-content-center">
+<?php
+        if(isset($_GET['error'])){
+            // echo "<div class='alert alert-warning alert-dismissible fade show'>";
+            echo "<div class='alert alert-danger'>";
+                echo $_GET['error'];
+                echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+                echo '<span aria-hidden="true">&times;</span>';
+            echo "</button>";
+            echo "</div>";
+        }
+    ?>
 </nav>
 
 <div class="container" style="width: 500px;">
@@ -28,7 +42,7 @@
 
         <div class="form-group">
             <label>Contact</label>
-            <input type="text" name="contact" class="form-control" required>
+            <input type="number" name="contact" class="form-control" required>
         </div>
 
         <div class="form-group">
