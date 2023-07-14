@@ -1,4 +1,4 @@
-<?php include "db_conn.php"; ?>
+<?php require_once "db_conn.php"; ?>
 <?php include "header.php"; ?>
 
 <nav class="navbar justify-content-center mt-4">
@@ -12,7 +12,7 @@
             echo "<div class='alert alert-warning alert-dismissible fade show'>";
                 echo $_GET['message'];
                 echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
-                    echo '<span aria-hidden="true">&times;</span>';
+                echo '<span aria-hidden="true">&times;</span>';
                 echo "</button>";
             echo "</div>";
         }
