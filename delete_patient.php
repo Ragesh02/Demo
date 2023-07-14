@@ -1,6 +1,6 @@
 <?php 
 
-    include "db_conn.php"; 
+    require_once "db_conn.php";
 
     if(isset($_GET['pat_id'])){
         $pat_id = $_GET['pat_id'];
