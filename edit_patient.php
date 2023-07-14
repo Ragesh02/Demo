@@ -13,6 +13,20 @@
     <h1>Patients Information Update Form</h1>
 </nav>
 
+<nav class="navbar justify-content-center">
+<?php
+        if(isset($_GET['error'])){
+            // echo "<div class='alert alert-warning alert-dismissible fade show'>";
+            echo "<div class='alert alert-danger'>";
+                echo $_GET['error'];
+                echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+                echo '<span aria-hidden="true">&times;</span>';
+            echo "</button>";
+            echo "</div>";
+        }
+    ?>
+</nav>
+
 <div class="container" style="width: 500px;">
     <form action="update_patient.php" method="post">
 
@@ -39,7 +53,7 @@
 
         <div class="form-group">
             <label>Contact</label>
-            <input type="text" name="contact" class="form-control" value="<?php echo $row['pat_contact']; ?>" required>
+            <input type="number" name="contact" class="form-control" value="<?php echo $row['pat_contact']; ?>" required>
         </div>
 
         <div class="form-group">
@@ -62,12 +76,12 @@
             <select class="form-control" name="doctor" id="doctor" required>
                 <option value="">-Select Doctor-</option>
                 <?php
-                    // Fetch and populate the doctors based on the selected department ID
-                    $query = "SELECT * FROM `doctors` WHERE doc_dep_id = '$pat_dep_id'";// Assuming $departmentId holds the selected department ID
+
+                    $query = "SELECT * FROM `doctors` WHERE doc_dep_id = '$pat_dep_id'"; 
                     $result = mysqli_query($connect, $query);
                     while ($row = mysqli_fetch_assoc($result)) {
-                        // echo $row['doc_id'] . ' = ' . $doc_id;
-                        $doc_selected = (trim($row['doc_id']) ==  trim($pat_doc_id)) ? 'selected' : ''; // Assuming $departmentId holds the selected department ID                        
+
+                        $doc_selected = (trim($row['doc_id']) ==  trim($pat_doc_id)) ? 'selected' : '';
                         echo "<option value='$row[doc_id]' $doc_selected>$row[doc_name]</option>";
                     }
                 ?>
