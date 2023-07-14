@@ -1,6 +1,6 @@
 <?php 
 
-    include "db_conn.php"; 
+    require_once "db_conn.php"; 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
