@@ -1,6 +1,6 @@
 <?php
 
-    include "db_conn.php";
+    require_once "db_conn.php";
 
     $dep_id = $_POST['dep_id'];
     $query = "SELECT * FROM `doctors` where doc_dep_id=$dep_id";
