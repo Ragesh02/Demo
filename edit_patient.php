@@ -1,4 +1,4 @@
-<?php require_once "db_conn.php"; ?>
+<?php include "db_conn.php"; ?>
 <?php include "header.php"; ?>
 
 <?php
@@ -14,14 +14,13 @@
 </nav>
 
 <nav class="navbar justify-content-center">
-<?php
+    <?php
         if(isset($_GET['error'])){
-            // echo "<div class='alert alert-warning alert-dismissible fade show'>";
-            echo "<div class='alert alert-danger'>";
+            echo "<div class='alert alert-danger alert-dismissible fade show'>";
                 echo $_GET['error'];
                 echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
-                echo '<span aria-hidden="true">&times;</span>';
-            echo "</button>";
+                    echo '<span aria-hidden="true">&times;</span>';
+                echo "</button>";
             echo "</div>";
         }
     ?>
@@ -40,20 +39,21 @@
             <label>Gender</label>
             <div class="form-check">
                 <input type="radio" class="form-check-input" name="gender" value="Male"
-                <?php if($row['pat_gender'] == 'Male') echo "checked";  ?> required>
+                    <?php if($row['pat_gender'] == 'Male') echo "checked";  ?> required>
                 <label class="form-check-label">Male</label>
             </div>
 
             <div class="form-check">
-                <input type="radio" class="form-check-input" name="gender" value="Female" 
-                <?php if($row['pat_gender'] == 'Female') echo "checked";  ?> required>
+                <input type="radio" class="form-check-input" name="gender" value="Female"
+                    <?php if($row['pat_gender'] == 'Female') echo "checked";  ?> required>
                 <label class="form-check-label">Female</label>
             </div>
         </div>
 
         <div class="form-group">
             <label>Contact</label>
-            <input type="number" name="contact" class="form-control" value="<?php echo $row['pat_contact']; ?>" required>
+            <input type="number" name="contact" class="form-control" value="<?php echo $row['pat_contact']; ?>"
+                required>
         </div>
 
         <div class="form-group">
@@ -97,23 +97,23 @@
 <?php include "footer.php"; ?>
 
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
 
-        $('#department').change(function() {
+    $('#department').change(function() {
 
-            var dep_Id = $(this).val();
+        var dep_Id = $(this).val();
 
-            $.ajax({
-                url: 'get_doctors.php',
-                type: 'POST',
-                data: {
-                    dep_id: dep_Id
-                },
-                success: function(data) {
-                    // Populate the doctor options dynamically
-                    $('#doctor').html(data);
-                }
-            });
+        $.ajax({
+            url: 'get_doctors.php',
+            type: 'POST',
+            data: {
+                dep_id: dep_Id
+            },
+            success: function(data) {
+                // Populate the doctor options dynamically
+                $('#doctor').html(data);
+            }
         });
     });
+});
 </script>
