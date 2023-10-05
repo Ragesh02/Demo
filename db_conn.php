@@ -1,11 +1,11 @@
 <?php
 
-    $hostname = "localhost";
+    $host = "localhost";
     $user = "root";
-    $password = "";
-    $dbname = "hospital";
+    $pass = "";
+    $db_name = "patients_information";
 
-    $connect = mysqli_connect($hostname, $user, $password, $dbname);
+    $connect = mysqli_connect($host, $user, $pass, $db_name);
 
     if (!$connect) {
         echo "DB is not connected";
